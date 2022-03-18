@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-sm-8">
+            <form action="#" th:action="@{/search}"
+                  th:object="${produit}" method="get">
+                <div class="form-group">
+                    <input type="text" th:field="*{designation}" id="designation"
+                           placeholder="Designation" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Search</button>
+            </form>
+
+            <input type="text" th:value="${produit.prix}"
+                   placeholder="Result" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-primary table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Quantite</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="produit : ${produits}">
+                    <td th:text="${produit.id}"></td>
+                    <td th:text="${produit.designation}"></td>
+                    <td th:text="${produit.prix}"></td>
+                    <td th:text="${produit.quantite}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+
+
+
